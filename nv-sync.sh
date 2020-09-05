@@ -1,2 +1,1 @@
-rsync ./init.vim ~/.config/nvim/init.vim
-rsync -r --delete ./nv-config ~/.config/nvim/
+cp ~/.config/nvim/init.vim ./init.vim
