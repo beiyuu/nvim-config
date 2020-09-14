@@ -17,6 +17,11 @@ call plug#begin('~/.config/nvim/plugged')
 
   "Vim Feature Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+    nnoremap <c-p> :Files<cr>
+    let g:fzf_buffers_jump = 1
+
   Plug 'scrooloose/nerdtree'
     nmap <leader>nt :NERDTree<cr>:set rnu<cr>
     let NERDTreeShowBookmarks=1
@@ -88,7 +93,7 @@ set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions=cro                   " Stop newline continution of comments
-set clipboard=unnamedplus               " Copy paste between vim and everything else
+set clipboard+=unnamedplus               " Copy paste between vim and everything else
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
