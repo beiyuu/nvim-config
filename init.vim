@@ -8,6 +8,15 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.config/nvim/plugged')
+  "UI Plugin"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  Plug 'rakr/vim-one'
+  Plug 'itchyny/lightline.vim'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1
+
+  "Vim Feature Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'scrooloose/nerdtree'
     nmap <leader>nt :NERDTree<cr>:set rnu<cr>
     let NERDTreeShowBookmarks=1
@@ -18,27 +27,19 @@ call plug#begin('~/.config/nvim/plugged')
     let NERDTreeWinPos=1
     autocmd FileType nerdtree setlocal nolist
 
+  "Coding function Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'ervandew/supertab'
     let g:SuperTabDefaultCompletionType = "<c-n>"
-
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'morhetz/gruvbox'
-  Plug 'itchyny/lightline.vim'
-  Plug 'ryanoasis/vim-devicons'
-    let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
-
-  Plug 'luochen1990/rainbow'
-    let g:rainbow_active = 1
+  Plug 'tpope/vim-commentary'
+    autocmd FileType apache setlocal commentstring=#\ %s
 call plug#end()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""General Settings""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "Color&Ruler Settings
 set termguicolors " 一定要设置，不然颜色有可能不对
-set guifont=DroidSansMono\ Nerd\ Font\ 11
 set colorcolumn=85           "彩色显示第85行
 set background=dark          "使用color solarized
 set cursorline               "设置光标高亮显示
@@ -49,7 +50,7 @@ set ruler
 set backspace=indent,eol,start
 set relativenumber   "相对行号 要想相对行号起作用要放在显示行号后面
 
-colorscheme gruvbox
+colorscheme one
 
 
 "Tab&Indent Setting
