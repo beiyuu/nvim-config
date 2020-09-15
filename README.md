@@ -25,3 +25,5 @@ NeoVim 采用`XDG Base Directory Specification(XDG 基本目录规范) `管理�
 - `Plug 'scrooloose/nerdtree'`   文件目录浏览
 - `Plug 'ervandew/supertab'`     Tab功能增强，使用Tab键补全选择等
 - `Plug 'tpope/vim-commentary'`  自动注释插件
+- `Plug 'bronson/vim-trailing-whitespace'` 清除行末空格
+- `Plug 'Lokaltog/vim-easymotion'`  光标快速移动

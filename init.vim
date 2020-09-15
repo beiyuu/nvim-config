@@ -15,11 +15,20 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
 
+    let g:coc_explorer_global_presets = {
+          \'floating': {
+          \'position': 'floating',
+          \'open-action-strategy': 'sourceWindow',
+          \}
+          \}
   "Vim Feature Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " nmap <space>e :CocCommand explorer<CR>
+    nmap <leader>e :CocCommand explorer --preset floating<CR>
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-    nnoremap <c-p> :Files<cr>
+    nnoremap <leader>f :Files<cr>
+    nnoremap <leader>bf :Buffers<cr>
     let g:fzf_buffers_jump = 1
 
   Plug 'scrooloose/nerdtree'
@@ -31,12 +40,24 @@ call plug#begin('~/.config/nvim/plugged')
     let NERDTreeShowLineNumbers=1
     let NERDTreeWinPos=1
     autocmd FileType nerdtree setlocal nolist
+  Plug 'airblade/vim-gitgutter'
+
 
   "Coding function Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'ervandew/supertab'
     let g:SuperTabDefaultCompletionType = "<c-n>"
   Plug 'tpope/vim-commentary'
     autocmd FileType apache setlocal commentstring=#\ %s
+  Plug 'bronson/vim-trailing-whitespace'
+  Plug 'Lokaltog/vim-easymotion'
+    let g:EasyMotion_smartcase = 0
+    let g:EasyMotion_do_mapping = 0 " Disable default mappings
+    nmap s <Plug>(easymotion-s)
+    nmap S <Plug>(easymotion-s2)
+    map <Leader>j <Plug>(easymotion-j)
+    map <Leader>k <Plug>(easymotion-k)
+    hi link EasyMotionShade  Comment
+    hi link EasyMotionTarget ErrorMsg
 call plug#end()
 
 
@@ -93,7 +114,7 @@ set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions=cro                   " Stop newline continution of comments
-set clipboard+=unnamedplus               " Copy paste between vim and everything else
+set clipboard=unnamedplus               " Copy paste between vim and everything else
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
@@ -123,6 +144,7 @@ nmap <leader><space> :w<cr>
 
 nmap <leader>q :execute "cd" expand("%:h")<CR> "切换到当前目录
 nmap <leader>s :1,%s///cg<left><left><left><left>   "搜索替换
+nnoremap <leader>ft vatzf    "折叠html标签 ,fold tag
 
 " 窗口管理
 " Better window navigation
@@ -136,4 +158,7 @@ nmap <leader>w <c-w>v<c-w>l
 nmap <leader>wc <c-w>c
 nmap <leader>ww <c-w>w
 nmap <leader>ws <c-w>s
+
+
+vmap <leader>c : !/mnt/c/Windows/System32/clip.exe<cr>u''
 
