@@ -112,7 +112,7 @@ vmap / /\v
 nmap <tab> %
 vmap <tab> %
 
-nnoremap <leader>v v`]
+nnoremap <leader>v v`] "选中最近修改或粘贴
 
 "tab切换
 nmap <leader>t gt
