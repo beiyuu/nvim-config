@@ -43,13 +43,14 @@ call plug#begin('~/.config/nvim/plugged')
     vmap <leader>p <Plug>(fakeclip-p)
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    nmap <leader>e :CocCommand explorer --preset floating<CR>
     let g:coc_explorer_global_presets = {
       \'floating': {
         \'position': 'floating',
         \'open-action-strategy': 'sourceWindow',
       \}
     \}
+    let g:coc_user_config = {"explorer.icon.enableNerdfont": 1}
+    nmap <leader>e :CocCommand explorer --preset floating<CR>
 
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
