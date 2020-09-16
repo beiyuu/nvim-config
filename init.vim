@@ -17,8 +17,6 @@ filetype plugin indent on
 call plug#begin('~/.config/nvim/plugged')
   "UI Plugin"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'rakr/vim-one'
-  " Plug 'itchyny/lightline.vim'
-  " Plug 'liuchengxu/eleline.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
     let g:airline_theme = 'molokai'
@@ -35,32 +33,29 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
 
-    let g:coc_explorer_global_presets = {
-          \'floating': {
-          \'position': 'floating',
-          \'open-action-strategy': 'sourceWindow',
-          \}
-          \}
 
   "Vim Feature Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  Plug 'kana/vim-fakeclip'
+    let g:fakeclip_no_default_key_mappings=1
+    nmap <leader>y <Plug>(fakeclip-Y)
+    vmap <leader>y <Plug>(fakeclip-y)
+    nmap <leader>p <Plug>(fakeclip-p)
+    vmap <leader>p <Plug>(fakeclip-p)
+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " nmap <space>e :CocCommand explorer<CR>
     nmap <leader>e :CocCommand explorer --preset floating<CR>
+    let g:coc_explorer_global_presets = {
+      \'floating': {
+        \'position': 'floating',
+        \'open-action-strategy': 'sourceWindow',
+      \}
+    \}
+
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
     nnoremap <leader>f :Files<cr>
     nnoremap <leader>bf :Buffers<cr>
     let g:fzf_buffers_jump = 1
-
-  Plug 'scrooloose/nerdtree'
-    nmap <leader>nt :NERDTree<cr>:set rnu<cr>
-    let NERDTreeShowBookmarks=1
-    let NERDTreeShowFiles=1
-    let NERDTreeShowHidden=1
-    let NERDTreeIgnore=['\.$','\~$']
-    let NERDTreeShowLineNumbers=1
-    let NERDTreeWinPos=1
-    autocmd FileType nerdtree setlocal nolist
 
   Plug 'airblade/vim-gitgutter'
   Plug 'voldikss/vim-floaterm'
@@ -153,7 +148,6 @@ set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions=cro                   " Stop newline continution of comments
-" set clipboard=unnamedplus               " Copy paste between vim and everything else
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
@@ -163,12 +157,6 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 imap jj <esc>
-
-"系统剪切
-nmap <leader>y "+y
-vmap <leader>y "+y
-nmap <leader>p "+p
-vmap <leader>p "+p
 
 ""使用tab键来代替%进行匹配跳转
 nmap <tab> %
@@ -199,7 +187,3 @@ nmap <leader>w <c-w>v<c-w>l
 nmap <leader>wc <c-w>c
 nmap <leader>ww <c-w>w
 nmap <leader>ws <c-w>s
-
-
-"vmap <leader>c : !/mnt/c/Windows/System32/clip.exe<cr>u''
-
