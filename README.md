@@ -1,12 +1,19 @@
 # NeoVim 配置
 
 ## Vim-Plug 安装
+<de>
 NeoVim 采用`XDG Base Directory Specification(XDG 基本目录规范) `管理配置文件，先手动安装`Vim-Plug`：
+  > curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+</del>
 
-> curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+`init.vim`中添加了自动`install vim-plug`的检查脚本：
+> let plugblob = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+> let plugfile = expand('~/.config/nvim/autoload/plug.vim')
+> if !filereadable(plugfile)
+>   execute("!curl -fLo '".plugfile."' --create-dirs '".plugblob."'")
+> endif
 
-安装完成后，使用`:PlugInstall`开始安装配置的插件。
-
+完成后，使用`:PlugInstall`开始安装配置的插件。
 
 ## 核心配置
 - 字体安装：下载`Nerd Fonts`后，通过 Mac & Windows 系统功能安装字体，在`iTerm2`或`Terminal(WSL)`中选择即可，NeoVim 中无需字体相关配置。

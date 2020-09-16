@@ -1,3 +1,10 @@
+" install vim-plug
+let plugblob = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let plugfile = expand('~/.config/nvim/autoload/plug.vim')
+if !filereadable(plugfile)
+  execute("!curl -fLo '".plugfile."' --create-dirs '".plugblob."'")
+endif
+
 syntax enable
 let g:mapleader = ","
 filetype plugin indent on
@@ -10,7 +17,20 @@ filetype plugin indent on
 call plug#begin('~/.config/nvim/plugged')
   "UI Plugin"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'rakr/vim-one'
-  Plug 'itchyny/lightline.vim'
+  " Plug 'itchyny/lightline.vim'
+  " Plug 'liuchengxu/eleline.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+    let g:airline_theme = 'molokai'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
+    let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+    let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
+    let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
+    let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right
+    let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
+    let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
   Plug 'ryanoasis/vim-devicons'
   Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
@@ -21,6 +41,7 @@ call plug#begin('~/.config/nvim/plugged')
           \'open-action-strategy': 'sourceWindow',
           \}
           \}
+
   "Vim Feature Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " nmap <space>e :CocCommand explorer<CR>
@@ -40,7 +61,20 @@ call plug#begin('~/.config/nvim/plugged')
     let NERDTreeShowLineNumbers=1
     let NERDTreeWinPos=1
     autocmd FileType nerdtree setlocal nolist
+
   Plug 'airblade/vim-gitgutter'
+  Plug 'voldikss/vim-floaterm'
+    let g:floaterm_gitcommit='floaterm'
+    let g:floaterm_autoinsert=1
+    let g:floaterm_width=0.8
+    let g:floaterm_height=0.8
+    let g:floaterm_wintitle=0
+    let g:floaterm_autoclose=1
+    " let g:floaterm_keymap_new    = '<F7>'
+    " let g:floaterm_keymap_prev   = '<F8>'
+    " let g:floaterm_keymap_next   = '<F9>'
+    let g:floaterm_keymap_toggle = '<F10>'
+    nmap <leader>lz :FloatermNew lazygit<cr>
 
 
   "Coding function Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,16 +82,23 @@ call plug#begin('~/.config/nvim/plugged')
     let g:SuperTabDefaultCompletionType = "<c-n>"
   Plug 'tpope/vim-commentary'
     autocmd FileType apache setlocal commentstring=#\ %s
-  Plug 'bronson/vim-trailing-whitespace'
+    nmap <leader>c <Plug>Commentary
+    xmap <leader>c <Plug>Commentary
+    omap <leader>c <Plug>Commentary
+    nmap <leader>cc <Plug>CommentaryLine
+  Plug 'ntpeters/vim-better-whitespace'
+    let g:better_whitespace_enabled=1
+    let g:current_line_whitespace_disabled_hard=1
   Plug 'Lokaltog/vim-easymotion'
-    let g:EasyMotion_smartcase = 0
-    let g:EasyMotion_do_mapping = 0 " Disable default mappings
+    let g:EasyMotion_smartcase = 1
+    let g:EasyMotion_do_mapping = 0
     nmap s <Plug>(easymotion-s)
     nmap S <Plug>(easymotion-s2)
     map <Leader>j <Plug>(easymotion-j)
     map <Leader>k <Plug>(easymotion-k)
-    hi link EasyMotionShade  Comment
-    hi link EasyMotionTarget ErrorMsg
+    hi link EasyMotionTarget search
+    hi link EasyMotionTarget2First Search
+    hi link EasyMotionTarget2Second Search
 call plug#end()
 
 
@@ -93,8 +134,6 @@ set autoindent                          " Good auto indent
 set pumheight=10                        " Makes popup menu smaller
 "set cmdheight=2                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
-set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
 set showtabline=2                       " Always show tabs
 
 set hidden              " TextEdit might fail if hidden is not set.
@@ -114,7 +153,7 @@ set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions=cro                   " Stop newline continution of comments
-set clipboard=unnamedplus               " Copy paste between vim and everything else
+" set clipboard=unnamedplus               " Copy paste between vim and everything else
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
@@ -125,9 +164,11 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 
 imap jj <esc>
 
-"修改vim的正则表达
-nmap / /\v
-vmap / /\v
+"系统剪切
+nmap <leader>y "+y
+vmap <leader>y "+y
+nmap <leader>p "+p
+vmap <leader>p "+p
 
 ""使用tab键来代替%进行匹配跳转
 nmap <tab> %
@@ -142,8 +183,8 @@ nmap <leader>r gT
 "<leader>空格快速保存
 nmap <leader><space> :w<cr>
 
-nmap <leader>q :execute "cd" expand("%:h")<CR> "切换到当前目录
-nmap <leader>s :1,%s///cg<left><left><left><left>   "搜索替换
+nnoremap <leader>q :cd %:p:h<CR>:pwd<CR>
+" nmap <leader>s :1,%s///cg<left><left><left><left>   "搜索替换
 nnoremap <leader>ft vatzf    "折叠html标签 ,fold tag
 
 " 窗口管理
@@ -160,5 +201,5 @@ nmap <leader>ww <c-w>w
 nmap <leader>ws <c-w>s
 
 
-vmap <leader>c : !/mnt/c/Windows/System32/clip.exe<cr>u''
+"vmap <leader>c : !/mnt/c/Windows/System32/clip.exe<cr>u''
 
