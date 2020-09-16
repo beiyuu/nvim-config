@@ -1,12 +1,13 @@
 # NeoVim 配置
 
 ## Vim-Plug 安装
-<del>
+
 NeoVim 采用`XDG Base Directory Specification(XDG 基本目录规范) `管理配置文件，先手动安装`Vim-Plug`：
 ```
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-</del>
+
+或者：
 
 `init.vim`中添加了自动`install vim-plug`的检查脚本：
 ```
