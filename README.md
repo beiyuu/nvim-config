@@ -1,18 +1,21 @@
 # NeoVim 配置
 
 ## Vim-Plug 安装
-<del>NeoVim 采用`XDG Base Directory Specification(XDG 基本目录规范) `管理配置文件，先手动安装`Vim-Plug`：
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+<del>
+NeoVim 采用`XDG Base Directory Specification(XDG 基本目录规范) `管理配置文件，先手动安装`Vim-Plug`：
+```
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 </del>
 
 `init.vim`中添加了自动`install vim-plug`的检查脚本：
-
-  let plugblob = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  let plugfile = expand("~/.config/nvim/autoload/plug.vim")
-  if !filereadable(plugfile)
-    execute("!curl -fLo '".plugfile."' --create-dirs '".plugblob."'")
-  endif
-
+```
+let plugblob = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+let plugfile = expand("~/.config/nvim/autoload/plug.vim")
+if !filereadable(plugfile)
+  execute("!curl -fLo '".plugfile."' --create-dirs '".plugblob."'")
+endif
+```
 完成后，使用`:PlugInstall`开始安装配置的插件。
 
 ## 核心配置
