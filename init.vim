@@ -17,18 +17,18 @@ filetype plugin indent on
 call plug#begin('~/.config/nvim/plugged')
   "UI Plugin"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'rakr/vim-one'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme = 'molokai'
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
-    let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
-    let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
-    let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
-    let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right
-    let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
-    let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
+  " Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline-themes'
+    " let g:airline_theme = 'molokai'
+    " let g:airline#extensions#tabline#enabled = 1
+    " let g:airline_powerline_fonts = 1
+    " let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
+    " let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+    " let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
+    " let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
+    " let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right
+    " let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
+    " let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
   Plug 'ryanoasis/vim-devicons'
   Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
@@ -43,22 +43,19 @@ call plug#begin('~/.config/nvim/plugged')
     vmap <leader>p <Plug>(fakeclip-p)
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_explorer_global_presets = {
-      \'floating': {
-        \'position': 'floating',
-        \'open-action-strategy': 'sourceWindow',
-      \}
-    \}
-    let g:coc_user_config = {"explorer.icon.enableNerdfont": 1}
+    "CocInstall coc-explorer coc-pairs coc-lists coc-snippets coc-diagnostic coc-highlight coc-markdownlint coc-bookmark
+    "CocInstall coc-prettier coc-java coc-python coc-yaml coc-json coc-eslint coc-tsserver coc-sql coc-go coc-css coc-html coc-vetur
+    let g:coc_explorer_global_presets = {'floating': {'position': 'floating','open-action-strategy': 'sourceWindow'}}
+    let g:coc_user_config = {"explorer.icon.enableNerdfont": 1, "explorer.floating.width": 120}
     nmap <leader>e :CocCommand explorer --preset floating<CR>
 
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-    nnoremap <leader>f :Files<cr>
+    nnoremap <c-p> :Files<cr>
     nnoremap <leader>bf :Buffers<cr>
     let g:fzf_buffers_jump = 1
 
-  Plug 'airblade/vim-gitgutter'
+  "Plug 'airblade/vim-gitgutter'
   Plug 'voldikss/vim-floaterm'
     let g:floaterm_gitcommit='floaterm'
     let g:floaterm_autoinsert=1
@@ -69,7 +66,7 @@ call plug#begin('~/.config/nvim/plugged')
     " let g:floaterm_keymap_new    = '<F7>'
     " let g:floaterm_keymap_prev   = '<F8>'
     " let g:floaterm_keymap_next   = '<F9>'
-    let g:floaterm_keymap_toggle = '<F10>'
+    let g:floaterm_keymap_toggle = '<C-o>'
     nmap <leader>lz :FloatermNew lazygit<cr>
 
 
@@ -85,16 +82,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
     let g:better_whitespace_enabled=1
     let g:current_line_whitespace_disabled_hard=1
-  Plug 'Lokaltog/vim-easymotion'
-    let g:EasyMotion_smartcase = 1
-    let g:EasyMotion_do_mapping = 0
-    nmap s <Plug>(easymotion-s)
-    nmap S <Plug>(easymotion-s2)
-    map <Leader>j <Plug>(easymotion-j)
-    map <Leader>k <Plug>(easymotion-k)
-    hi link EasyMotionTarget search
-    hi link EasyMotionTarget2First Search
-    hi link EasyMotionTarget2Second Search
+    highlight ExtraWhitespace ctermbg=red
+  Plug 'justinmk/vim-sneak'
 call plug#end()
 
 
@@ -188,3 +177,6 @@ nmap <leader>w <c-w>v<c-w>l
 nmap <leader>wc <c-w>c
 nmap <leader>ww <c-w>w
 nmap <leader>ws <c-w>s
+
+" exe 'source ./tabline.vim'
+" exe 'source ./statusline.vim'
