@@ -17,18 +17,18 @@ filetype plugin indent on
 call plug#begin('~/.config/nvim/plugged')
   "UI Plugin"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   Plug 'rakr/vim-one'
-  " Plug 'vim-airline/vim-airline'
-  " Plug 'vim-airline/vim-airline-themes'
-    " let g:airline_theme = 'molokai'
-    " let g:airline#extensions#tabline#enabled = 1
-    " let g:airline_powerline_fonts = 1
-    " let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
-    " let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
-    " let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
-    " let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
-    " let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right
-    " let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
-    " let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+    let g:airline_theme = 'molokai'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
+    let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+    let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
+    let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
+    let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right
+    let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
+    let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
   Plug 'ryanoasis/vim-devicons'
   Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
@@ -177,6 +177,3 @@ nmap <leader>w <c-w>v<c-w>l
 nmap <leader>wc <c-w>c
 nmap <leader>ww <c-w>w
 nmap <leader>ws <c-w>s
-
-" exe 'source ./tabline.vim'
-" exe 'source ./statusline.vim'
