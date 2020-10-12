@@ -38,6 +38,7 @@ endif
 - `Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }`   文件模糊查找
 - `Plug 'junegunn/fzf.vim'`    文件模糊查找
 - `Plug 'voldikss/vim-floaterm'`   Float terminal
+- `Plug 'mattn/emmet-vim'` HTML 快速补全
 - `Plug 'ervandew/supertab'`     Tab功能增强，使用Tab键补全选择等
 - `Plug 'tpope/vim-commentary'`  自动注释插件
 - `Plug 'ntpeters/vim-better-whitespace'` 清除行末空格

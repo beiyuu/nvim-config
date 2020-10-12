@@ -71,6 +71,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 
   "Coding function Plugin""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  Plug 'mattn/emmet-vim'
   Plug 'ervandew/supertab'
     let g:SuperTabDefaultCompletionType = "<c-n>"
   Plug 'tpope/vim-commentary'
@@ -117,6 +118,7 @@ set autoindent                          " Good auto indent
 
 "Window Settings
 set pumheight=10                        " Makes popup menu smaller
+set signcolumn=yes:1 "防止提示文字闪动
 "set cmdheight=2                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set showtabline=2                       " Always show tabs
