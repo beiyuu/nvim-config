@@ -43,7 +43,7 @@ call plug#begin('~/.config/nvim/plugged')
     vmap <leader>p <Plug>(fakeclip-p)
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    "CocInstall coc-explorer coc-pairs coc-lists coc-snippets coc-diagnostic coc-highlight coc-markdownlint coc-bookmark
+    "CocInstall coc-explorer coc-pairs coc-lists coc-snippets coc-diagnostic coc-highlight coc-markdownlint
     "CocInstall coc-prettier coc-java coc-python coc-yaml coc-json coc-eslint coc-tsserver coc-sql coc-go coc-css coc-html coc-vetur
     let g:coc_explorer_global_presets = {'floating': {'position': 'floating','open-action-strategy': 'sourceWindow'}}
     let g:coc_user_config = {"explorer.icon.enableNerdfont": 1, "explorer.floating.width": 120}
