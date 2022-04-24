@@ -43,7 +43,7 @@ call plug#begin('~/.config/nvim/plugged')
     vmap <leader>p <Plug>(fakeclip-p)
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    "CocInstall coc-explorer coc-pairs coc-lists coc-snippets coc-diagnostic coc-highlight coc-markdownlint
+    "CocInstall coc-explorer coc-pairs coc-lists coc-snippets coc-diagnostic coc-highlight coc-markdownlint coc-bookmark
     "CocInstall coc-prettier coc-java coc-python coc-yaml coc-json coc-eslint coc-tsserver coc-sql coc-go coc-css coc-html coc-vetur
     let g:coc_explorer_global_presets = {'floating': {'position': 'floating','open-action-strategy': 'sourceWindow'}}
     let g:coc_user_config = {"explorer.icon.enableNerdfont": 1, "explorer.floating.width": 120}
@@ -86,6 +86,28 @@ call plug#begin('~/.config/nvim/plugged')
     highlight ExtraWhitespace ctermbg=red
   Plug 'justinmk/vim-sneak'
 call plug#end()
+
+"fix vscode folding
+if(exists("g:vscode"))
+    nnoremap zM :call VSCodeNotify('editor.foldAll')<CR>
+    nnoremap zR :call VSCodeNotify('editor.unfoldAll')<CR>
+    nnoremap zc :call VSCodeNotify('editor.fold')<CR>
+    nnoremap zC :call VSCodeNotify('editor.foldRecursively')<CR>
+    nnoremap zo :call VSCodeNotify('editor.unfold')<CR>
+    nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
+    nnoremap za :call VSCodeNotify('editor.toggleFold')<CR>
+
+    function! MoveCursor(direction) abort
+        if(reg_recording() == '' && reg_executing() == '')
+            return 'g'.a:direction
+        else
+            return a:direction
+        endif
+    endfunction
+
+    nmap <expr> j MoveCursor('j')
+    nmap <expr> k MoveCursor('k')
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
